@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 16% 47%;
+    --sidebar-primary: 222 47% 11%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 199 89% 48%;
+
+    /* Custom tokens */
+    --navy: 222 47% 11%;
+    --navy-light: 217 33% 17%;
+    --teal: 199 89% 48%;
+    --teal-light: 199 89% 58%;
+    --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(217 33% 25%) 50%, hsl(199 89% 38%) 100%);
+  }
+
+  .dark {
+    --background: 231 23% 16%;
+    --foreground: 210 40% 98%;
+    --card: 231 15% 24%;
+    --card-foreground: 210 40% 98%;
+    --popover: 217 33% 17%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 212 27% 84%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply bg-background;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  #root {
+    @apply bg-background;
+    min-height: 100vh;
+    width: 100%;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(20, 184, 166, 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(14, 165, 233, 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 20%, rgba(59, 130, 246, 0.25) 0%, transparent 50%),
+      linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(217 33% 20%) 30%, hsl(199 89% 35%) 60%, hsl(222 47% 15%) 100%);
+  }
+
+  .stat-card {
+    @apply bg-card rounded-xl p-5 border border-border transition-shadow duration-200;
+    box-shadow: 0 33px 9px 0 rgba(0, 0, 0, 0.00), 0 21px 8px 0 rgba(0, 0, 0, 0.01), 0 12px 7px 0 rgba(0, 0, 0, 0.02), 0 5px 5px 0 rgba(0, 0, 0, 0.03), 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  }
+
+  .badge-tokenized {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full bg-teal/10 text-teal;
+  }
+
+  .badge-live {
+    @apply inline-flex items-center gap-1.5 px-2 py-0.5 text-xs font-medium rounded-full bg-success/10 text-success;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-colors;
+  }
+
+  .nav-item-active {
+    @apply bg-muted text-foreground;
+  }
+
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1.05);
+    }
+  }
+
+  .progress-ring {
+    @apply w-10 h-10;
+  }
+
+  .vote-card {
+    @apply bg-card rounded-xl p-4 border border-border hover:border-accent/30 transition-colors;
+  }
+
+  /* Patent Form Styles */
+  .section-header {
+    @apply rounded-t-lg p-4 flex items-center justify-between cursor-pointer transition-all duration-200;
+  }
+
+  .section-header-active {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .section-header-active:hover {
+    @apply bg-primary/95;
+  }
+
+  .section-header-inactive {
+    background-color: #EDEDED;
+    @apply text-foreground;
+  }
+
+  .section-header-inactive:hover {
+    background-color: #E0E0E0;
+  }
+
+  .section-content {
+    @apply bg-card border border-t-0 border-border rounded-b-lg p-6;
+  }
+
+  .form-label {
+    @apply text-sm font-medium text-foreground mb-1.5 block;
+  }
+
+  .form-label-required::after {
+    content: '*';
+    @apply text-destructive ml-0.5;
+  }
+
+  .form-hint {
+    @apply text-xs text-muted-foreground mt-1;
+  }
+
+  .auto-saved-badge {
+    @apply inline-flex items-center gap-1.5 text-success text-xs font-medium bg-success/10 px-2 py-1 rounded;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-teal-light;
+  }
+}
+
+/* Login Page Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
